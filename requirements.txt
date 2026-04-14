@@ -1,0 +1,15 @@
+langchain-core 
+langgraph 
+langchain-community
+langchain-ollama
+langchain-chroma
+langchain-google-genai
+groq
+google-generativeai
+python-dotenv
+fastapi 
+uvicorn
+streamlit
+chromadb
+langchain-groq
+ddgs
