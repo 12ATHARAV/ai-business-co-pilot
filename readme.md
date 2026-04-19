@@ -1,6 +1,6 @@
 # 🚀 AI Business Co-Pilot
 
-An **Agentic AI System** that transforms a simple business idea into a structured, actionable execution plan using multi-agent workflows powered by LLMs.
+An **Agentic AI System** that transforms a simple business idea into a structured, actionable execution plan using **multi-agent workflows with iterative self-improvement**.
 
 ---
 
@@ -11,7 +11,7 @@ AI Business Co-Pilot allows users to input a business idea (e.g., *"Start a drop
 * 📊 Market Research Insights
 * 🛠️ Execution Strategy
 * 📈 Marketing Plan
-* 🧪 AI Critique & Validation
+* 🧪 AI Critique & Iterative Refinement
 
 ---
 
@@ -19,6 +19,7 @@ AI Business Co-Pilot allows users to input a business idea (e.g., *"Start a drop
 
 * 💬 Chat-based UI (Streamlit)
 * 🤖 Multi-Agent Architecture (Planner, Executor, Critic)
+* 🔁 Iterative Feedback Loop (self-improving system)
 * 🔀 Smart Routing using LLM
 * 📜 Persistent History (SQLite)
 * 📥 Downloadable Business Reports
@@ -30,6 +31,7 @@ AI Business Co-Pilot allows users to input a business idea (e.g., *"Start a drop
 
 ```mermaid
 flowchart TD
+
     A[User Input] --> B[Planner Agent]
 
     B --> C[Dynamic Executor]
@@ -51,11 +53,29 @@ flowchart TD
 ## 🔄 Workflow
 
 1. User enters a business idea
-2. Planner Agent breaks it into steps
-3. Dynamic Executor routes each step to appropriate agent
-4. Agents generate outputs (research, execution, marketing)
-5. Critic Agent evaluates quality
-6. Final structured response returned
+2. Planner Agent generates a structured plan
+3. Dynamic Executor routes each step to appropriate agents
+4. Agents produce outputs (research, execution, marketing)
+5. Critic Agent evaluates the result
+6. If not approved → feedback is sent back to Planner
+7. Planner improves the plan using critique
+8. Loop continues until approval or iteration limit
+
+---
+
+## 🔁 Iterative Intelligence (Core Innovation)
+
+Unlike traditional pipelines, this system includes a **feedback-driven loop**:
+
+```text
+Planner → Executor → Critic → (feedback) → Planner
+```
+
+This enables:
+
+* Self-correction
+* Improved outputs over iterations
+* More reliable and refined business strategies
 
 ---
 
@@ -76,23 +96,30 @@ flowchart TD
 
 ### 🔹 Planner Agent
 
-* Converts user input into structured steps
+* Converts user input into structured business steps
+* Improves plan using critique feedback
 
 ### 🔹 Dynamic Executor
 
 * Routes tasks intelligently using LLM
+* Decides which agent handles each step
 
 ### 🔹 Research Agent
 
-* Market analysis, trends, competitors
+* Market analysis, trends, competitor insights
 
 ### 🔹 Execution Agent
 
-* Implementation steps and tools
+* Actionable implementation steps
+
+### 🔹 Marketing Agent
+
+* Growth strategies and outreach
 
 ### 🔹 Critic Agent
 
-* Validates and improves output quality
+* Evaluates output quality
+* Decides whether to approve or iterate
 
 ---
 
@@ -100,7 +127,7 @@ flowchart TD
 
 * **Session Memory** → Chat messages
 * **SQLite DB** → Persistent history
-* **ChromaDB** → Semantic retrieval
+* **ChromaDB** → Semantic retrieval (RAG)
 
 ---
 
@@ -117,7 +144,7 @@ pip install -r requirements.txt
 
 ## 🔐 Environment Variables
 
-Create `.env` file:
+Create a `.env` file:
 
 ```env
 GROQ_API_KEY=your_api_key_here
@@ -146,27 +173,19 @@ Steps:
 
 ---
 
-## 📸 Screenshots
-
-* Chat-based UI
-* Agent execution flow
-* History sidebar
-* Downloadable reports
-
----
-
 ## ⚠️ Challenges Faced
 
 * LLM response inconsistencies
 * Handling `<think>` tokens
 * Deployment environment issues
 * Agent routing accuracy
+* Implementing iterative feedback loop
 
 ---
 
 ## 🔮 Future Improvements
 
-* Shopify / Stripe integration
+* Real API integrations (Shopify, Stripe)
 * Fully autonomous execution
 * Multi-user authentication
 * Analytics dashboard
@@ -176,7 +195,7 @@ Steps:
 
 ## 🏆 Conclusion
 
-AI Business Co-Pilot demonstrates how **Agentic AI systems** can automate complex business planning tasks using coordinated LLM agents.
+AI Business Co-Pilot demonstrates how **Agentic AI systems with iterative feedback loops** can automate complex business planning tasks with improved reliability and intelligence.
 
 ---
 

@@ -7,3 +7,4 @@ class AgentState(TypedDict):
     execution: str
     critique: str
     approved: bool
+    iteration: int

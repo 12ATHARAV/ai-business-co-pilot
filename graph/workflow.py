@@ -55,20 +55,21 @@ builder.set_entry_point("planner")
 builder.add_edge("planner", "executor")
 builder.add_edge("executor", "critic")
 
-# def decision(state):
-#     if state["approved"] or state["iteration"] >= 2:
-#         return "end"
-#     return "planner"
+MAX_ITERATIONS = 3
 
-# builder.add_conditional_edges(
-#     "critic",
-#     decision,
-#     {
-#         "planner": "planner",
-#         "end": END
-#     }
-# )
+def decision(state):
+    """Route back to planner if not approved, else end. Cap at MAX_ITERATIONS."""
+    if state.get("approved") or state.get("iteration", 0) >= MAX_ITERATIONS:
+        return "end"
+    return "planner"
 
-builder.add_edge("critic", END)
+builder.add_conditional_edges(
+    "critic",
+    decision,
+    {
+        "planner": "planner",
+        "end": END
+    }
+)
 
 graph = builder.compile()

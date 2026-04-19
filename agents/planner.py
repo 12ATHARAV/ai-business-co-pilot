@@ -38,19 +38,29 @@ def planner_agent(state: dict):
     """
     Planner Agent:
     - Reads user input
-    - Generates plan
+    - Generates/re-generates plan (with critic feedback if available)
     - Updates state
     """
 
     user_input = state["user_input"]
-    
-    #retrieve memory
+    critique = state.get("critique", "")
+    iteration = state.get("iteration", 0)
+
+    # retrieve memory
     memory = retrieve_memory(user_input)[:500]  # LIMIT MEMORY
 
-    plan = planner_chain.invoke({
-        "input": f"{user_input}\n\nPast Knowledge:\n{memory}"
-    })
+    # Build input — include critic feedback on re-plan attempts
+    if critique and iteration > 0:
+        prompt_input = (
+            f"{user_input}\n\n"
+            f"Past Knowledge:\n{memory}\n\n"
+            f"⚠️ Previous plan was rejected by the critic. Critic feedback:\n{critique}\n\n"
+            f"Please create an improved plan addressing the issues above."
+        )
+    else:
+        prompt_input = f"{user_input}\n\nPast Knowledge:\n{memory}"
 
+    plan = planner_chain.invoke({"input": prompt_input})
     plan = clean_output(plan)  # clean it
 
     return {
