@@ -13,3 +13,4 @@ streamlit
 chromadb
 langchain-groq
 ddgs
+langchain_openai
