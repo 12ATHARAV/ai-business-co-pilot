@@ -1,6 +1,6 @@
 # 🚀 AI Business Co-Pilot
 
-An **Agentic AI System** that transforms a simple business idea into a structured, actionable execution plan using **multi-agent workflows with iterative self-improvement**.
+An **Agentic AI System** that transforms a simple business idea into a structured, actionable execution plan using **multi-agent workflows with iterative self-improvement**
 
 ---
 
