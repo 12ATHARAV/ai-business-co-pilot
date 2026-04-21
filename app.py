@@ -1,4 +1,4 @@
-import streamlit as 
+import streamlit as st
 from graph.workflow import graph
 from database.db import save_run, get_history, get_run_by_id
 import time
